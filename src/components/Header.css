@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+.header__left {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.header__right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.header-logo {
+    height: 88px;
+}
+.header-action {
+    cursor: pointer;
+}
+button.header-action {
+    background-color: darkseagreen;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+}
+.header-icon {
+    background-size: contain;
+    width: 44px;
+    background-repeat: no-repeat;
+    padding: 5px;
+    height: 44px;
+}
+.header-icon.profile {
+}
+.header-icon.leaderboard {
+    background-image: url(/static/media/leaderboard.da3e3e3b.png);
+}
+.leaderboard:hover {
+    background-color: rgba(143, 188, 143, 0.1);
+}

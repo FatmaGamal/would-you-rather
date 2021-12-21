@@ -1,0 +1,53 @@
+.users-list {
+    width: auto;
+    margin: auto;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    width: auto;
+}
+.user-card > * {
+    padding: 0 15px;
+}
+.user-img {
+    width: 75px;
+    height: 100px;
+    object-fit: contain;
+}
+.user-info {
+    padding: 0 30px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+.user-info > *:not(:last-child){
+    margin-bottom: 10px;
+}
+.user-info__name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.user-total {
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+}
+.user-score {
+    background-color: darkseagreen;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+.label {
+    font-size: 14px;
+}
