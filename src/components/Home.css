@@ -1,0 +1,10 @@
+.questions {
+    max-width: 80%;
+    margin: auto;
+}
+.nav-tabs .nav-link.active {
+    color: seagreen;
+}
+.nav-tabs .nav-link {
+    color: black;
+}
