@@ -4,7 +4,6 @@ import './Leaderboard.css'
 
 class Leaderboard extends React.Component {
     render() {
-        console.log(this.props);
         return (
         <div className="users-list">
             {this.props.users.map((user) => (
