@@ -21,15 +21,20 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        {this.props.loading === true ? null : 
-        <>
         <Switch>
-        <Route path='/add' component={Add} />
-        <Route path='*' component={Show}/>
+        <Route path='/login' component={Login} />
+        <Route>
+          {this.props.loading === true ? null : 
+          <>
+          <Header />          
+          <Switch>
+          <Route path='/add' component={Add} />
+          <Route path='*' component={Show}/>
+          </Switch>
+          </>
+          }
+          </Route>
         </Switch>
-        </>
-        }
         </div>
       );
     }

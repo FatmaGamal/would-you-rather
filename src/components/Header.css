@@ -16,10 +16,7 @@
 .header-logo {
     height: 88px;
 }
-.header-action {
-    cursor: pointer;
-}
-button.header-action {
+button.action {
     background-color: darkseagreen;
     color: white;
     padding: 10px 15px;
@@ -28,15 +25,19 @@ button.header-action {
 }
 .header-icon {
     background-size: contain;
+    object-fit: contain;
     width: 44px;
     background-repeat: no-repeat;
     padding: 5px;
     height: 44px;
 }
 .header-icon.profile {
+    border-radius: 50%;
+    border: 1px solid darkseagreen;
+    margin-right: 5px;
 }
 .header-icon.leaderboard {
-    background-image: url(/static/media/leaderboard.da3e3e3b.png);
+    background-image: url('./../leaderboard.png');
 }
 .leaderboard:hover {
     background-color: rgba(143, 188, 143, 0.1);

@@ -11,13 +11,13 @@ class Header extends React.Component {
         return(
         <header className="header">
             <div className="header__left">
-                <img className="header-action header-logo" src='./logo.png' as={Link} to={'/'} />
-                <div className="header-action header-icon leaderboard" as={Link} to={'/leaderboard'}></div>
+                <Link to='/'><img className="action header-logo" src='./logo.png'  alt="logo" /></Link>
+                <Link className="action header-icon leaderboard" to='/leaderboard'></Link>
             </div>
             <div className="header__right">
-                <div className="header-action"><i className="header-icon profile"></i><span>Hello Here</span></div>
+                <div><img src={this.props.user.avatarURL} className="header-icon profile"/><span>{this.props.user.name}</span></div>
                 {/* authenticated must be handled */}
-                <button className="header-action" as={Link} to={'/login'}>Logout</button>
+                <Link to="/login"><button className="action">Logout</button></Link>
             </div>
 
         </header>
@@ -25,8 +25,9 @@ class Header extends React.Component {
     }
 }
 
-function mapStateToProps(props) {
-    console.log('authed', props)
-    return {/*  user: props.users[props.authenticatedUser] */}
+function mapStateToProps({authenticatedUser, users}) {
+    return { 
+        user: users[authenticatedUser]
+    }
 }
 export default connect(mapStateToProps)(Header);
