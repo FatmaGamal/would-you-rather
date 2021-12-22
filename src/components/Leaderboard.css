@@ -23,6 +23,7 @@
     width: 75px;
     height: 100px;
     object-fit: contain;
+    padding: 0;
 }
 .user-info {
     padding: 0 30px;
@@ -40,7 +41,7 @@
 .user-total {
     text-align: center;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 34px;
 }
 .user-score {
     background-color: darkseagreen;
