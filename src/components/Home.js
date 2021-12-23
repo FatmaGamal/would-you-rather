@@ -10,7 +10,7 @@ import './Home.css'
 class Home extends React.Component {
     render() {
         return(
-            <div className="questions">
+            <div className="container">
                 <Tabs defaultActiveKey="unanswered" id="wyr-tabs" className="questions-tabs">
                     <Tab eventKey="unanswered" title="UnAnswered">
                         <div className="questions-list">

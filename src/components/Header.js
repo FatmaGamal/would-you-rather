@@ -15,7 +15,7 @@ class Header extends React.Component {
                 <Link className="action header-icon leaderboard" to='/leaderboard'></Link>
             </div>
             <div className="header__right">
-                <div><img src={this.props.user.avatarURL} className="header-icon profile"/><span>{this.props.user.name}</span></div>
+                <div><img className="header-icon profile" src={this.props.user.avatarURL} alt={this.props.user.name} /><span>{this.props.user.name}</span></div>
                 {/* authenticated must be handled */}
                 <Link to="/login"><button className="action">Logout</button></Link>
             </div>
