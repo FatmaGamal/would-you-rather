@@ -24,7 +24,9 @@ class App extends React.Component {
         <Switch>
         <Route path='/login' component={Login} />
         <Route>
-          {this.props.loading === true ? null : 
+          {this.props.loading === true ? 
+          <Route component={Login} />
+           : 
           <>
           <Header />          
           <Switch>
