@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { handleAddQuestion } from './../actions/questions';
 
 
@@ -10,7 +11,8 @@ import './Add.css';
 class Add extends React.Component {
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        redirect: false
     }
 
     handleOnInputChange = (e) => {
@@ -20,34 +22,26 @@ class Add extends React.Component {
     }
 
     handleSubmit = (e) => {
-        /* why isn't debugger showing me this correctly?! */
         e.preventDefault();
-        if (this.state.optionOne.value && this.state.optionTwo.value) {
-            console.log('here')
-            debugger;
-            this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo, this.props.authenticatedUser));
-            this.setState({
-                optionOne: '',
-                optionTwo: ''
-            });
+        if (this.state.optionOne && this.state.optionTwo) {
+            this.props.dispatch(handleAddQuestion(this.state.optionOne.value, this.state.optionTwo.value, this.props.authenticatedUser));
+            this.setState({redirect: true});
         }
     }
 
     render() {
         return (
-            <div className="container">
-                <div className="question-card">
-                <p>Would You rather...</p>
-                <Form className="add-question-form" onChange={(e) => this.handleOnInputChange(e)} onSubmit={this.handleSubmit}>
-                    <Form.Control size="md" type="text" name="optionOne" placeholder="Option 1" />
-                    <div className="text-center">OR</div>
-                    <Form.Control size="md" type="text" name="optionTwo" placeholder="Option 2" />
-                    <Button className="action submit-btn text-center" type="submit">
-                        Save
-                    </Button>
-                </Form>
-                </div>
+            this.state.redirect ? <Redirect to="/" /> : <div className="container">
+            <div className="form-question-card">
+            <p>Would You rather...</p>
+            <Form className="add-question-form" onChange={(e) => this.handleOnInputChange(e)} onSubmit={this.handleSubmit}>
+                <Form.Control size="md" type="text" name="optionOne" placeholder="Option 1" />
+                <div className="text-center">OR</div>
+                <Form.Control size="md" type="text" name="optionTwo" placeholder="Option 2" />
+                <Button className="action submit-btn text-center" type="submit">Save</Button>
+            </Form>
             </div>
+        </div>
         )
     }
 }

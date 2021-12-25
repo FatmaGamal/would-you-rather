@@ -1,22 +1,28 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { setAuthenticatedUser } from './../actions/authenticatedUser';
 
 import { Form, Button } from 'react-bootstrap'
 import './Login.css';
 
 class Add extends React.Component {
+    state= {
+        redirect: false
+    }
     componentDidMount() {
         this.props.dispatch(setAuthenticatedUser(null));
     }
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.dispatch(setAuthenticatedUser(e.target[0].value));
+        this.setState({redirect: true});
     }
 
     render() {
         return(
+        this.state.redirect ? <Redirect to="/" /> : 
         <div className="msg-container">
             <div className="msg login">
                 <p>Welcome to WOULD YOU RATHER</p>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { handleAnswerQuestion } from './../actions/questions';
 
 import { Form, Button } from 'react-bootstrap';
@@ -9,11 +10,11 @@ import './Question.css';
 class Question extends React.Component {
     state = {
         answer: null,
-        selected: ''
+        selected: '',
+        redirect: false
     }
 
     handleOnRadioCheck = (e) => {
-        debugger;
         this.setState({answer: e.target.name});
     }
 
@@ -21,7 +22,7 @@ class Question extends React.Component {
         e.preventDefault();
         if (this.state.answer) {
             this.props.dispatch(handleAnswerQuestion(this.props.authenticatedUser, this.props.match.params.id, this.state.answer));
-            this.props.history.push('/');
+            this.setState({redirect: true})
         }
     }
 
@@ -35,6 +36,7 @@ class Question extends React.Component {
 
 
         return (
+            this.state.redirect ? <Redirect to="/"/> :
             <div className="container">
 
                 <div className="question-card">
