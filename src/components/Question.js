@@ -21,17 +21,15 @@ class Question extends React.Component {
         e.preventDefault();
         if (this.state.answer) {
             this.props.dispatch(handleAnswerQuestion(this.props.authenticatedUser, this.props.match.params.id, this.state.answer));
-            debugger;
-            //this.props.history.push('/');
+            this.props.history.push('/');
         }
     }
 
     render () {
         let qId = this.props.match.params.id;
-        //debugger;
         let question = this.props.questions[qId];
         let mode = this.props.location.search.includes('question') ? 'question' : 'answered';
-        let author = this.props.author;
+        let author = this.props.users[question.author];
         let selected = this.props.authenticatedUser.answers[question.id] || null;
         let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
 
@@ -40,7 +38,7 @@ class Question extends React.Component {
             <div className="container">
 
                 <div className="question-card">
-                    <img className="question-img" src='/logo.png'/* {author.avatarURL} *//>
+                    <img className="question-img" src={author.avatarURL} />
                     {mode === 'question' && (
                     <div className="question-options">
                         <p className="text-lg">Would You Rather...</p>
@@ -73,6 +71,7 @@ class Question extends React.Component {
 function mapStateToProps({authenticatedUser, questions, users}) {
     return {
         questions,
+        users,
         authenticatedUser: users[authenticatedUser]
     }
 }
