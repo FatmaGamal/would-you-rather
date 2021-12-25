@@ -1,7 +1,6 @@
 import { 
     ADD_QUESTION,
     GET_QUESTIONS, 
-    GET_QUESTION,
     ANSWER_QUESTION
 } from './types';
 
