@@ -11,7 +11,7 @@ class Header extends React.Component {
         return(
         <header className="header">
             <div className="header__left">
-                <Link to='/'><img className="action header-logo" src='./logo.png'  alt="logo" /></Link>
+                <Link to='/'><img className="action header-logo" src='/logo.png'  alt="logo" /></Link>
                 <Link className="action header-icon leaderboard" to='/leaderboard'></Link>
             </div>
             <div className="header__right">
