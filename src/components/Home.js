@@ -14,12 +14,12 @@ class Home extends React.Component {
                 <Tabs defaultActiveKey="unanswered" id="wyr-tabs" className="questions-tabs">
                     <Tab eventKey="unanswered" title="UnAnswered">
                         <div className="questions-list">
-                        {this.props.questions.map(question => <QuestionTeaser key={question.id} q={question} author={this.props.users[question.author]} mode="question"/>)}
+                        {this.props.questions.map(question => <QuestionTeaser key={question.id} q={question} author={this.props.users[question.author]} mode="q"/>)}
                         </div>
                     </Tab>
                     <Tab eventKey="answered" title="Answered">
                         <div className="questions-list">
-                        {this.props.answered.map(answeredQ => <QuestionTeaser key={answeredQ.id} q={answeredQ}  author={this.props.users[answeredQ.author]} mode="answered"/>)}
+                        {this.props.answered.map(answeredQ => <QuestionTeaser key={answeredQ.id} q={answeredQ}  author={this.props.users[answeredQ.author]} mode="show"/>)}
                         </div>
                     </Tab>
                 </Tabs>

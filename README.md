@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# Would You Rather Project
+
+Would You Rather is a Trivia Quiz Game where you choose whether you would rather do something or another, You can ask your own questions and check which choices your friends prefer.
+View the Leaderboard and you can see your rank among your friends. Challenge your friends with daring questions and keep the game going!
+
+### Future updates:
+1. Adding a Loadingbar
+2. Implementing it using sessions way of coding
+3. Adding users, implmenting a complete authorization scenario
+4. saving authenticated user in cookie / sessionStorage to correct access when changing url from browser
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

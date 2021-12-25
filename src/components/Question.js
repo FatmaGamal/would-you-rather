@@ -3,13 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { handleAnswerQuestion } from './../actions/questions';
+import Error from './Error';
 
 import { Form, Button } from 'react-bootstrap';
 import './Question.css';
 
 class Question extends React.Component {
     state = {
-        answer: null,
+        answer: '',
         selected: '',
         redirect: false
     }
@@ -21,32 +22,39 @@ class Question extends React.Component {
     handleOnSubmit = (e) => {
         e.preventDefault();
         if (this.state.answer) {
-            this.props.dispatch(handleAnswerQuestion(this.props.authenticatedUser, this.props.match.params.id, this.state.answer));
-            this.setState({redirect: true})
+            this.props.dispatch(handleAnswerQuestion({
+                authedUser: this.props.authenticatedUser.id, 
+                qid:this.props.match.params.id, 
+                answer: this.state.answer
+            }));
+            this.setState({redirect: true});
         }
     }
 
     render () {
         let qId = this.props.match.params.id;
         let question = this.props.questions[qId];
-        let mode = this.props.location.search.includes('question') ? 'question' : 'answered';
-        let author = this.props.users[question.author];
-        let selected = this.props.authenticatedUser.answers[question.id] || null;
-        let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
+        let mode, author, selected, totalVotes;
+        if (question) {
+            mode = this.props.location.search.includes('show') ? 'answered' : 'question';
+            author = this.props.users[question.author];
+            selected = this.props.authenticatedUser.answers[question.id] || null;
+            totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
+        }
 
 
         return (
-            this.state.redirect ? <Redirect to="/"/> :
+            this.state.redirect ? <Redirect to="/"/> : question ? 
             <div className="container">
 
                 <div className="question-card">
-                    <img className="question-img" src={author.avatarURL} />
+                    <img className="question-img" src={author.avatarURL} alt={author.name} />
                     {mode === 'question' && (
                     <div className="question-options">
                         <p className="text-lg">Would You Rather...</p>
-                        <Form onChange={(e) => this.handleOnRadioCheck(e)} onSubmit={(e) => this.handleSubmit(e)}>
-                            <Form.Check  key="optionOne" type='radio' id='optionOne' label={question.optionOne.text} />
-                            <Form.Check  key="optionTwo" type='radio' id='optionTwo' label={question.optionTwo.text} />
+                        <Form onChange={(e) => this.handleOnRadioCheck(e)} onSubmit={(e) => this.handleOnSubmit(e)}>
+                            <Form.Check  key="optionOne" type='radio' id="optionOne" name="optionOne" label={question.optionOne.text} />
+                            <Form.Check  key="optionTwo" type='radio' id="optionTwo" name="optionTwo" label={question.optionTwo.text} />
                             <Button type="submit" className="action submit-btn text-center">Submit</Button>
                         </Form>
                     </div>
@@ -58,14 +66,14 @@ class Question extends React.Component {
                             <div>I would rather {question.optionOne.text}</div>
                             <span>{question.optionOne.votes.length} out of {totalVotes}</span>
                             </div>
-                        <div className="question-option" className={`question-option ${selected === 'optionTwo' ? 'selected': null}`}>
+                        <div className={`question-option ${selected === 'optionTwo' ? 'selected': null}`}>
                             <div>I would rather {question.optionTwo.text}</div>
                             <span>{question.optionTwo.votes.length} out of {totalVotes}</span>
                         </div>
                     </div>
                     )}
                 </div>
-            </div>
+            </div> : <Error />
         )
     }
 }

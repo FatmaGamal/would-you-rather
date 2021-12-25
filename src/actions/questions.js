@@ -5,7 +5,8 @@ import {
 } from './types';
 
 import { 
-    _saveQuestion
+    _saveQuestion,
+    _saveQuestionAnswer
 } from '../_DATA';
 
 export function getQuestions(questions) {
@@ -22,6 +23,15 @@ export function addQuestion(question) {
     }
 }
 
+export function answerQuestion({qid, answer, authedUser}) {
+    return  {
+        type: ANSWER_QUESTION,
+        qid,
+        answer,
+        authedUser
+    }
+}
+
 export function handleAddQuestion(optionOneText, optionTwoText, authenticatedUser) {
     return (dispatch) => {
         //dispatch(showLoading();
@@ -35,13 +45,14 @@ export function handleAddQuestion(optionOneText, optionTwoText, authenticatedUse
     }
 }
 
-/*
-export const getQuestions = () => dispatch => {
-    __getQuestions().then((questions) => {
-        dispatch({
-            type: GET_QUESTIONS,
-            payload: {questions}
+export function handleAnswerQuestion({qid, answer, authedUser}) {
+    return (dispatch) => {
+        return _saveQuestionAnswer({
+            authedUser,
+            qid,
+            answer
+        }).then(() => {
+            return dispatch(answerQuestion({qid, answer, authedUser}))
         })
-    })
-} 
- */
+    }
+}

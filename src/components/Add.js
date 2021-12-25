@@ -21,10 +21,10 @@ class Add extends React.Component {
         })
     }
 
-    handleSubmit = (e) => {
+    handleOnSubmit = (e) => {
         e.preventDefault();
         if (this.state.optionOne && this.state.optionTwo) {
-            this.props.dispatch(handleAddQuestion(this.state.optionOne.value, this.state.optionTwo.value, this.props.authenticatedUser));
+            this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo, this.props.authenticatedUser));
             this.setState({redirect: true});
         }
     }
@@ -34,7 +34,7 @@ class Add extends React.Component {
             this.state.redirect ? <Redirect to="/" /> : <div className="container">
             <div className="form-question-card">
             <p>Would You rather...</p>
-            <Form className="add-question-form" onChange={(e) => this.handleOnInputChange(e)} onSubmit={this.handleSubmit}>
+            <Form className="add-question-form" onChange={(e) => this.handleOnInputChange(e)} onSubmit={(e) => this.handleOnSubmit(e)}>
                 <Form.Control size="md" type="text" name="optionOne" placeholder="Option 1" />
                 <div className="text-center">OR</div>
                 <Form.Control size="md" type="text" name="optionTwo" placeholder="Option 2" />

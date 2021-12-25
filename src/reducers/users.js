@@ -1,6 +1,7 @@
 import {
     GET_USERS,
-    ADD_QUESTION
+    ADD_QUESTION,
+    ANSWER_QUESTION
 } from './../actions/types';
 
 export default function users(state = {}, action) {
@@ -12,18 +13,25 @@ export default function users(state = {}, action) {
             }
         case ADD_QUESTION:
             const {question} = action;
-            users = {
+            return {
                 ...state,
                 [question.author]: {
+                    ...state[question.author],
                     questions : state[question.author].questions.concat([question.id])
-                    /* TODO: why isn't this working ?! it gives a red line here in VSCode */
-                    /* {
-                        ...users[users.id].questions,
-                        [question.id]
-                    } */ 
                 }
             }
-            return (users);
+        case ANSWER_QUESTION:
+            const {qid, answer, authedUser} = action;
+            return {
+                ...state,
+                [authedUser]: {
+                  ...state[authedUser],
+                  answers: {
+                    ...state[authedUser].answers,
+                    [qid]: answer
+                  }
+                }
+              }
         default:
             return state
     }
