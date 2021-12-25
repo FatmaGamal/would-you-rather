@@ -1,5 +1,4 @@
 import {
-    GET_AUTHENTICATED,
     SET_AUTHENTICATED
 } from './types'
 

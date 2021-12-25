@@ -4,9 +4,6 @@ import {
 } from '../_DATA';
 import { getUsers } from './users'
 import { getQuestions } from './questions'
-import { setAuthenticatedUser } from './authenticatedUser'
-
-const AUTHENTICATED = 'johndoe';
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -15,7 +12,6 @@ export function handleInitialData() {
             let questions = res[1];
             dispatch(getQuestions(questions))
             dispatch(getUsers(users))
-            dispatch(setAuthenticatedUser(AUTHENTICATED))
         })
     }
 }
