@@ -16,7 +16,6 @@ class Header extends React.Component {
             </div>
             <div className="header__right">
                 <div><img className="header-icon profile" src={this.props.user.avatarURL} alt={this.props.user.name} /><span>{this.props.user.name}</span></div>
-                {/* authenticated must be handled */}
                 <Link to="/login"><button className="action">Logout</button></Link>
             </div>
 
