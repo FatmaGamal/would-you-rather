@@ -14,12 +14,12 @@ class Home extends React.Component {
                 <Tabs defaultActiveKey="unanswered" id="wyr-tabs" className="questions-tabs">
                     <Tab eventKey="unanswered" title="UnAnswered">
                         <div className="questions-list">
-                        {this.props.questions.map(question => <QuestionTeaser key={question.id} q={question} author={this.props.users[question.author]} />)}
+                        {this.props.questions.map(question => <QuestionTeaser key={question.id} q={question} author={this.props.users[question.author]} mode="question"/>)}
                         </div>
                     </Tab>
                     <Tab eventKey="answered" title="Answered">
                         <div className="questions-list">
-                        {this.props.answered.map(answeredQ => <QuestionTeaser key={answeredQ.id} q={answeredQ}  author={this.props.users[answeredQ.author]}/>)}
+                        {this.props.answered.map(answeredQ => <QuestionTeaser key={answeredQ.id} q={answeredQ}  author={this.props.users[answeredQ.author]} mode="answered"/>)}
                         </div>
                     </Tab>
                 </Tabs>
@@ -30,8 +30,8 @@ class Home extends React.Component {
 
 function mapStateToProps({authenticatedUser, questions, users}) {
     return {
-        answered: Object.values(questions).filter(question => (users[authenticatedUser].answers[question.id])),
-        questions: Object.values(questions).filter(question => (!users[authenticatedUser].answers[question.id])),
+        answered: Object.values(questions).filter(question => (users[authenticatedUser].answers[question.id])).sort((a, b) => b.timestamp - a.timestamp),
+        questions: Object.values(questions).filter(question => (!users[authenticatedUser].answers[question.id])).sort((a, b) => b.timestamp - a.timestamp),
         users
     }
 }
