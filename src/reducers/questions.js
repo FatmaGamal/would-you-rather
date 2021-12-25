@@ -1,5 +1,8 @@
 import {
-    GET_QUESTIONS
+    GET_QUESTIONS,
+    ADD_QUESTION,
+    GET_QUESTION,
+    ANSWER_QUESTION
 } from './../actions/types';
 
 export default function questions(state = {}, action) {
@@ -9,6 +12,14 @@ export default function questions(state = {}, action) {
                 ...state,
                 ...action.questions
             }
+        case ADD_QUESTION:
+            const {question} = action;
+            questions = {
+                ...state,
+                [question.id]: question
+              }
+              console.log('updates questions', questions);
+            return (questions);
         default:
             return state
     }
