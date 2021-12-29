@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Demo
 [Would You Rather](https://simpsons-would-you-rather.netlify.app/)
 
-## Future updates:
+## Future updates
 - Adding a Loadingbar
 - Implementing it using sessions way of coding
 - Adding users, implmenting a complete authorization scenario
