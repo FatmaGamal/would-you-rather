@@ -3,11 +3,11 @@ Would You Rather is a Trivia Quiz Game where you choose whether you would rather
 View the Leaderboard and you can see your rank among your friends. Challenge your friends with daring questions and keep the game going!
 
 ## Built With
-[React-Bootstrap](https://react-bootstrap.github.io/) - The front-end framework
-[npx create-react-app](https://www.npmjs.com/package/npx)  - Dependency Management
-[React.js](https://reactjs.org/) - JavaScript library for building user interfaces
-[Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
-[React Router](https://reactrouter.com/) - Client-side routing
+- [React-Bootstrap](https://react-bootstrap.github.io/) - The front-end framework
+- [npx create-react-app](https://www.npmjs.com/package/npx)  - Dependency Management
+- [React.js](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+- [React Router](https://reactrouter.com/) - Client-side routing
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine.
@@ -32,11 +32,11 @@ These instructions will get you a copy of the project up and running on your loc
 [Would You Rather](https://simpsons-would-you-rather.netlify.app/)
 
 ## Future updates:
-1. Adding a Loadingbar
-2. Implementing it using sessions way of coding
-3. Adding users, implmenting a complete authorization scenario
-4. saving authenticated user in cookie / sessionStorage to correct access when changing url from browser
+- Adding a Loadingbar
+- Implementing it using sessions way of coding
+- Adding users, implmenting a complete authorization scenario
+- saving authenticated user in cookie / sessionStorage to correct access when changing url from browser
 
 ## Authors
-Fatma El-Nagar
+[Fatma El-Nagar](https://github.com/FatmaGamal/)
 
